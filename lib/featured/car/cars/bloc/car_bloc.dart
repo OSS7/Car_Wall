@@ -1,14 +1,8 @@
-import 'dart:math';
-
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:get_it/get_it.dart';
 import 'package:meta/meta.dart';
 
-import '../../../../core/service/api_helper.dart';
 import '../../../../injectable_config.dart';
-import '../../../../main.dart';
 import '../models/car_model.dart';
 
 part 'car_event.dart';
@@ -32,6 +26,7 @@ class CarBloc extends Bloc<CarEvent, CarState> {
           _cars =
               response.docs.map((doc) => CarModel.fromDocument(doc)).toList();
         } catch (e) {
+          print('---------------$e');
           emit(CarsErrorState(message: e.toString()));
         }
         emit(CarsDoneState());

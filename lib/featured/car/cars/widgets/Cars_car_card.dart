@@ -20,7 +20,7 @@ class CarsCarCard extends StatelessWidget {
         CarModel _car = carsBloc.cars[i];
         return CarsCarCardCustomCard(
           onPress: () {
-            Get.toNamed(MyRoutes.CAR_DETAILS);
+            Get.toNamed(MyRoutes.CAR_DETAILS, arguments: _car.name);
           },
           child: Column(
             children: [

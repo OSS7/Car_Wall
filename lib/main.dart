@@ -23,17 +23,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (context) => CarBloc()),
-      ],
-      child: SafeArea(
-        child: GetMaterialApp(
-          showSemanticsDebugger: false,
-          getPages: my_route.getPages,
-          initialRoute: MyRoutes.HOME,
-          home: const OnBoardingView(),
-        ),
+    return SafeArea(
+      child: GetMaterialApp(
+        showSemanticsDebugger: false,
+        getPages: my_route.getPages,
+        initialRoute: MyRoutes.HOME,
+        home: const OnBoardingView(),
       ),
     );
   }

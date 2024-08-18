@@ -27,7 +27,7 @@ class CarsCarCardCarInfo extends StatelessWidget {
                     color: Colors.yellow,
                   )
                 ],
-              )
+              ),
             ],
           ),
         ),

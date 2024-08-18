@@ -6,7 +6,9 @@ class CarModel {
   final double rate;
   final String type;
   final String image;
-
+  final int mileage;
+  final String location;
+  final int year;
 
   CarModel({
     required this.name,
@@ -14,6 +16,9 @@ class CarModel {
     required this.rate,
     required this.type,
     required this.image,
+    required this.mileage,
+    required this.location,
+    required this.year,
   });
 
   factory CarModel.fromJson(Map<String, dynamic> json) {
@@ -23,6 +28,9 @@ class CarModel {
       rate: json['rate'],
       type: json['type'],
       image: json['image'],
+      mileage: json['mileage'],
+      location: json['location'],
+      year: json['year'],
     );
   }
   factory CarModel.fromDocument(DocumentSnapshot doc) {
@@ -33,16 +41,22 @@ class CarModel {
       rate: data['rate'],
       type: data['type'],
       image: data['image'],
+      mileage: data['mileage'],
+      location: data['location'],
+      year: data['year'],
     );
   }
 
-  Map<String, Object> toJson(){
+  Map<String, Object> toJson() {
     return {
       'name': name,
       'price': price,
       'rate': rate,
       'type': type,
       'image': image,
+      'mileage': mileage,
+      'location': location,
+      'year': year,
     };
   }
 }

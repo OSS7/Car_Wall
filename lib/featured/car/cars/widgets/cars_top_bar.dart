@@ -1,3 +1,5 @@
+import 'package:carwall/core/constant/icons.dart';
+import 'package:carwall/core/widgets/custom_icon.dart';
 import 'package:flutter/material.dart';
 
 class CarsTopBar extends StatelessWidget {
@@ -25,8 +27,8 @@ class CarsTopBar extends StatelessWidget {
                 ),
                 child: Container(
                   margin: const EdgeInsets.all(4.0),
-                  child: const Icon(
-                    Icons.location_on,
+                  child: CustomIcon(
+                    MyIcons.LOCATION,
                   ),
                 ),
               ),
@@ -58,9 +60,8 @@ class CarsTopBar extends StatelessWidget {
             ),
             child: Container(
               margin: const EdgeInsets.all(4.0),
-              child: const Icon(
-                Icons.notification_important,
-                size: 30,
+              child: CustomIcon(
+                MyIcons.NOTIFICATION,
               ),
             ),
           ),
