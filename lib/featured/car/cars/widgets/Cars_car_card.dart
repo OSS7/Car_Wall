@@ -1,5 +1,9 @@
+import 'package:carwall/featured/car/cars/bloc/car_bloc.dart';
+import 'package:carwall/featured/car/cars/models/car_model.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
+import '../../../../core/constant/routes.dart';
 import 'cars_car_card/cars_car_card_car_info.dart';
 import 'cars_car_card/cars_car_card_custom_card.dart';
 import 'cars_car_card/cars_car_card_image.dart';
@@ -10,21 +14,25 @@ class CarsCarCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.sizeOf(context);
     return ListView.builder(
-      itemCount: 5,
-      itemBuilder: (i, context) {
+      itemCount: carsBloc.cars.length,
+      itemBuilder: (context, i) {
+        CarModel _car = carsBloc.cars[i];
         return CarsCarCardCustomCard(
-          // height: 5,
+          onPress: () {
+            Get.toNamed(MyRoutes.CAR_DETAILS);
+          },
           child: Column(
             children: [
-              const Stack(
+              Stack(
                 children: [
-                  CarsCarCardImage(),
-                  CarsCarCardTopBar(),
+                  CarsCarCardImage(image: _car.image),
+                  const CarsCarCardTopBar(),
                 ],
               ),
-              const CarsCarCardCarInfo(),
+              CarsCarCardCarInfo(
+                car: _car,
+              ),
             ],
           ),
         );

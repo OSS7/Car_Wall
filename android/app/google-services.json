@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1073325458707",
+    "project_id": "carwall-d7ac5",
+    "storage_bucket": "carwall-d7ac5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1073325458707:android:3a9d9c60897f796af586e6",
+        "android_client_info": {
+          "package_name": "com.example.carwall"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUdxfo1eThcUUlVuV5LucnSKsexKS6shg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

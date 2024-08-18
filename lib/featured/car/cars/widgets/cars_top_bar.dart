@@ -9,8 +9,8 @@ class CarsTopBar extends StatelessWidget {
 
     return Container(
       // color: Colors.grey,
-      padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
-      height: size.height * 0.12,
+      padding: const EdgeInsets.fromLTRB(20, 5, 20, 0),
+      height: size.height * 0.09,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -39,7 +39,7 @@ class CarsTopBar extends StatelessWidget {
                 children: [
                   Text('Location'),
                   Text(
-                    'San Francisco',
+                    'Erbil',
                     style: TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.bold,
@@ -60,6 +60,7 @@ class CarsTopBar extends StatelessWidget {
               margin: const EdgeInsets.all(4.0),
               child: const Icon(
                 Icons.notification_important,
+                size: 30,
               ),
             ),
           ),

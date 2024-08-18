@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class CarsCarCardImage extends StatelessWidget {
-  const CarsCarCardImage({super.key});
+  final String image;
+  const CarsCarCardImage({super.key, required this.image});
 
   @override
   Widget build(BuildContext context) {
@@ -10,8 +11,8 @@ class CarsCarCardImage extends StatelessWidget {
       height: size.height * 0.2,
       // color: Colors.white,
       child: Center(
-        child: Image.asset(
-          'assets/images/car.png',
+        child: Image.network(
+          image,
           fit: BoxFit.fill,
         ),
       ),

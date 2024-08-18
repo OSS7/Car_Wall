@@ -1,20 +1,27 @@
 import 'package:flutter/material.dart';
 
-class CarsCarCardTopBar extends StatelessWidget {
+class CarsCarCardTopBar extends StatefulWidget {
   const CarsCarCardTopBar({super.key});
+
+  @override
+  State<CarsCarCardTopBar> createState() => _CarsCarCardTopBarState();
+}
+
+class _CarsCarCardTopBarState extends State<CarsCarCardTopBar> {
+  bool isFavorite = false;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(8),
-      padding: EdgeInsets.all(4),
+      margin: const EdgeInsets.all(8),
+      padding: const EdgeInsets.all(4),
       // color: Colors.black12,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
             // margin: EdgeInsets.all(8),
-            padding: EdgeInsets.all(4),
+            padding: const EdgeInsets.all(4),
             decoration: const BoxDecoration(
               color: Colors.blueAccent,
               borderRadius: BorderRadius.all(
@@ -23,14 +30,21 @@ class CarsCarCardTopBar extends StatelessWidget {
             ),
             // width: 80,
             // height: 25,
-            child: Text(
-              'Best Offer',
+            child: const Text(
+              'For sale',
               style: TextStyle(color: Colors.white),
             ),
           ),
-          Icon(
-            Icons.favorite,
-            color: Colors.grey,
+          IconButton(
+            onPressed: () {
+              setState(() {
+                isFavorite = !isFavorite;
+              });
+            },
+            icon: Icon(
+              Icons.favorite,
+              color: isFavorite ? Colors.blueAccent : Colors.grey,
+            ),
           ),
         ],
       ),

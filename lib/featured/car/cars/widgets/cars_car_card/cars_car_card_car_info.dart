@@ -1,7 +1,9 @@
+import 'package:carwall/featured/car/cars/models/car_model.dart';
 import 'package:flutter/material.dart';
 
 class CarsCarCardCarInfo extends StatelessWidget {
-  const CarsCarCardCarInfo({super.key});
+  final CarModel car;
+  const CarsCarCardCarInfo({super.key, required this.car});
 
   @override
   Widget build(BuildContext context) {
@@ -10,16 +12,16 @@ class CarsCarCardCarInfo extends StatelessWidget {
         Container(
           // color: Colors.white30,
           margin: const EdgeInsets.fromLTRB(8, 0, 8, 8),
-          child: const Row(
+          child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Audi A8',
+                car.name,
                 style: TextStyle(fontSize: 24),
               ),
               Row(
                 children: [
-                  Text('4.5'),
+                  Text(car.rate.toString()),
                   Icon(
                     Icons.star,
                     color: Colors.yellow,
@@ -29,7 +31,7 @@ class CarsCarCardCarInfo extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(
+        const SizedBox(
           width: 200,
           child: Divider(
             height: 4,
@@ -42,11 +44,11 @@ class CarsCarCardCarInfo extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Manual',
+                car.type,
                 style: TextStyle(fontSize: 16),
               ),
               Text(
-                '\$80,000',
+                '\$${car.price}',
                 style: TextStyle(
                     fontSize: 26,
                     color: Colors.blue,
