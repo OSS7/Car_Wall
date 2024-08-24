@@ -1,11 +1,12 @@
-import 'package:carwall/core/constant/colors.dart';
-import 'package:carwall/core/constant/icons.dart';
-import 'package:carwall/featured/car/cars/models/car_model.dart';
+import '../../../../core/constant/icons.dart';
+import '../../cars/models/car_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_map/flutter_map.dart';
-import 'package:latlong2/latlong.dart';
+import 'package:intl/intl.dart';
+import 'car_details_details_section/car_details_details_section_car_name.dart';
+import 'car_details_details_section/car_details_details_section_data_card.dart';
+import 'car_details_details_section/car_details_details_section_map.dart';
 
-import '../../../../core/widgets/custom_icon.dart';
+var formatter = NumberFormat('#,###,###');
 
 class CarDetailsDetailsSection extends StatelessWidget {
   final CarModel? car;
@@ -21,184 +22,44 @@ class CarDetailsDetailsSection extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          Padding(
-            padding: EdgeInsets.all(12.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  car?.name ?? '',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 28,
-                  ),
-                  textAlign: TextAlign.left,
-                ),
-                Row(
-                  children: [
-                    Text(
-                      car?.rate.toString() ?? '',
-                      style: TextStyle(
-                        fontSize: 18,
-                      ),
-                    ),
-                    Icon(
-                      Icons.star,
-                      color: Colors.yellow,
-                    )
-                  ],
-                ),
-              ],
-            ),
-          ),
+          CarDetailsDetailsSectionCarName(car: car),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Container(
-                height: 120,
-                width: 120,
-                decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey, width: 1),
-                    borderRadius: const BorderRadius.all(Radius.circular(20))),
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      CustomIcon(MyIcons.DOLLAR),
-                      Text(
-                        car?.price.toString() ?? '',
-                      ),
-                    ],
-                  ),
-                ),
+              CarDetailsDetailsSectionDataCard(
+                icon: MyIcons.DOLLAR,
+                text: '\$${formatter.format(car?.price)}',
               ),
-              Container(
-                height: 120,
-                width: 120,
-                decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey, width: 1),
-                    borderRadius: const BorderRadius.all(Radius.circular(20))),
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      CustomIcon(
-                        MyIcons.MANUAL,
-                      ),
-                      Text(
-                        car?.type.toString() ?? '',
-                      ),
-                    ],
-                  ),
-                ),
+              CarDetailsDetailsSectionDataCard(
+                icon: MyIcons.MANUAL,
+                text: car?.type.toString(),
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Container(
-                height: 120,
-                width: 120,
-                decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey, width: 1),
-                    borderRadius: const BorderRadius.all(Radius.circular(20))),
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      CustomIcon(MyIcons.SPEED),
-                      Text(
-                        car?.mileage.toString() ?? '',
-                      ),
-                    ],
-                  ),
-                ),
+              CarDetailsDetailsSectionDataCard(
+                icon: MyIcons.SPEED,
+                text: '${car?.mileage.toString()} Mi',
               ),
-              Container(
-                height: 120,
-                width: 120,
-                decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey, width: 1),
-                    borderRadius: const BorderRadius.all(Radius.circular(20))),
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      CustomIcon(MyIcons.CALENDER),
-                      Text(
-                        car?.year.toString() ?? '',
-                      ),
-                    ],
-                  ),
-                ),
+              CarDetailsDetailsSectionDataCard(
+                icon: MyIcons.CALENDER,
+                text: car?.year.toString(),
               ),
-              Container(
-                height: 120,
-                width: 120,
-                decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey, width: 1),
-                    borderRadius: const BorderRadius.all(Radius.circular(20))),
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      CustomIcon(
-                        MyIcons.LOCATION,
-                        size: 35,
-                      ),
-                      Text(
-                        car?.location.toString() ?? '',
-                      ),
-                    ],
-                  ),
-                ),
+              CarDetailsDetailsSectionDataCard(
+                icon: MyIcons.LOCATION,
+                text: car?.location.toString(),
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
-          Text(
-            'Car\'s Location',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 28,
-            ),
-            textAlign: TextAlign.left,
-          ),
-          Container(
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-            height: 250,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(15),
-              child: FlutterMap(
-                options: MapOptions(
-                  initialCenter: LatLng(36.1767826, 44.0072916),
-                  initialZoom: 17.0,
-                ),
-                children: [
-                  TileLayer(
-                    urlTemplate:
-                        'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-                  ),
-                  MarkerLayer(
-                    markers: [
-                      Marker(
-                        point: LatLng(36.1767826, 44.0072916),
-                        width: 80,
-                        height: 80,
-                        child: Icon(Icons.location_on, color: cPrimary),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ),
+          const CarDetailsDetailsSectionMap(),
         ],
       ),
     );

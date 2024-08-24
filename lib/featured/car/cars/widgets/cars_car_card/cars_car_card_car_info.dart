@@ -1,5 +1,8 @@
 import 'package:carwall/featured/car/cars/models/car_model.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+
+var formatter = NumberFormat('#,###,###');
 
 class CarsCarCardCarInfo extends StatelessWidget {
   final CarModel car;
@@ -17,7 +20,7 @@ class CarsCarCardCarInfo extends StatelessWidget {
             children: [
               Text(
                 car.name,
-                style: TextStyle(fontSize: 24),
+                style: TextStyle(fontSize: 22),
               ),
               Row(
                 children: [
@@ -31,11 +34,14 @@ class CarsCarCardCarInfo extends StatelessWidget {
             ],
           ),
         ),
-        const SizedBox(
-          width: 200,
-          child: Divider(
-            height: 4,
-            thickness: 2,
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 35.0),
+          child: const SizedBox(
+            width: double.infinity,
+            child: Divider(
+              height: 4,
+              thickness: 2,
+            ),
           ),
         ),
         Padding(
@@ -48,9 +54,9 @@ class CarsCarCardCarInfo extends StatelessWidget {
                 style: TextStyle(fontSize: 16),
               ),
               Text(
-                '\$${car.price}',
+                '\$${formatter.format(car.price)}',
                 style: TextStyle(
-                    fontSize: 26,
+                    fontSize: 22,
                     color: Colors.blue,
                     fontWeight: FontWeight.bold),
               )

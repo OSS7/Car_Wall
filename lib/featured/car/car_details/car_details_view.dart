@@ -1,5 +1,4 @@
-import 'package:carwall/featured/car/car_details/bloc/car_details_cubit.dart';
-import 'package:carwall/featured/car/car_details/bloc/car_details_cubit.dart';
+import 'package:carwall/featured/car/car_details/cubit/car_details_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';

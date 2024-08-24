@@ -14,6 +14,7 @@ class CarDetailsCubit extends Cubit<CarDetailsState> {
 
   CarModel? _car;
   CarModel? get car => _car;
+
   void getCarDetails(String car) async {
     emit(CarDetailsLoadingState());
     try {
