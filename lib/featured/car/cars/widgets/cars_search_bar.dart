@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../bloc/car_bloc.dart';
+
 class CarsSearchBar extends StatelessWidget {
   const CarsSearchBar({super.key});
 
@@ -29,6 +31,7 @@ class CarsSearchBar extends StatelessWidget {
           ),
           onChanged: (text) {
             debugPrint(text);
+            carsBloc.add(SearchCarsEvent(text.toString()));
           },
         ),
       ),

@@ -1,4 +1,5 @@
 import 'package:carwall/core/constant/routes.dart';
+import 'package:carwall/core/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,25 +10,10 @@ class OnBoardingContinueButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.sizeOf(context);
-
-    return SizedBox(
-      width: size.width * 0.9,
-      height: size.height * 0.09,
-      child: MaterialButton(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        color: cWhite,
-        onPressed: () {
+    return CustomButton(
+        onPress: () {
           Get.toNamed(MyRoutes.CARS);
         },
-        child: Text(
-          'Continue to the app',
-          style: TextStyle(
-            color: cPrimary,
-            fontSize: 20,
-          ),
-        ),
-      ),
-    );
+        title: 'Continue to the app');
   }
 }

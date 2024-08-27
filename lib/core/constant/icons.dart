@@ -4,5 +4,6 @@ class MyIcons {
       NOTIFICATION = 'assets/icons/notification.svg',
       DOLLAR = 'assets/icons/dollar.svg',
       MANUAL = 'assets/icons/manual.svg',
+      MENU = 'assets/icons/menu.svg',
       CALENDER = 'assets/icons/calender.svg';
 }

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 
+import '../../../core/widgets/custom_drawer.dart';
 import '../../services/services_view.dart';
 import 'bloc/car_bloc.dart';
 
@@ -29,34 +30,12 @@ class _CarsViewState extends State<CarsView> {
       child: BlocBuilder<CarBloc, CarState>(
         bloc: carsBloc..add(GetCarsEvent()),
         builder: (context, state) {
-          List screens = [
-            CarsBody(
-              state: state,
-            ),
-            const ServicesView(),
-          ];
           return Scaffold(
             backgroundColor: cWhite,
-            bottomNavigationBar: BottomNavigationBar(
-              elevation: 0,
-              backgroundColor: cWhite,
-              items: const [
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.car_crash_sharp),
-                  label: 'Cars',
-                  backgroundColor: Colors.red,
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.home_repair_service),
-                  label: 'Services',
-                  backgroundColor: Colors.green,
-                ),
-              ],
-              currentIndex: selectedIndex,
-              selectedItemColor: cPrimary,
-              onTap: _onItemTapped,
+            drawer: CustomDrawer(),
+            body: CarsBody(
+              state: state,
             ),
-            body: screens[selectedIndex],
           );
         },
       ),

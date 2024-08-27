@@ -7,6 +7,11 @@ sealed class CarEvent {
 
 class GetCarsEvent extends CarEvent {}
 
+class SearchCarsEvent extends CarEvent {
+  final String text;
+  SearchCarsEvent(this.text);
+}
+
 class SetHomeSelectEvent extends CarEvent {
   @override
   List<Object> get props => [];

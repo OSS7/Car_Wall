@@ -91,7 +91,7 @@ class _CustomDropDownState extends State<CustomDropDown> {
                                   ?.map(
                                     (e) => SelectedListItem(
                                       name: e.name.toString(),
-                                      value: e.id.toString(),
+                                      value: e.formType.toString(),
                                       isSelected: true,
                                     ),
                                   )
