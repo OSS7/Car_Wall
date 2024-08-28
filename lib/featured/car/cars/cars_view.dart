@@ -1,12 +1,10 @@
 import 'package:carwall/core/constant/colors.dart';
 import 'package:carwall/featured/car/cars/widgets/cars_body.dart';
-import 'package:carwall/featured/on_boarding/on_boarding_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 
 import '../../../core/widgets/custom_drawer.dart';
-import '../../services/services_view.dart';
 import 'bloc/car_bloc.dart';
 
 class CarsView extends StatefulWidget {

@@ -18,8 +18,8 @@ class CarDetailsCubit extends Cubit<CarDetailsState> {
   void getCarDetails(String car) async {
     emit(CarDetailsLoadingState());
     try {
-      CollectionReference _ref = FirebaseFirestore.instance.collection('cars');
-      final response = await _ref.where('name', isEqualTo: car).get();
+      CollectionReference ref = FirebaseFirestore.instance.collection('cars');
+      final response = await ref.where('name', isEqualTo: car).get();
       _car = response.docs.map((e) => CarModel.fromDocument(e)).first;
       emit(CarDetailsSuccessfulState());
     } catch (e) {

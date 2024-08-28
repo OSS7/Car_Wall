@@ -1,21 +1,16 @@
-import 'dart:ffi';
 
 import 'package:carwall/core/constant/colors.dart';
 import 'package:carwall/core/widgets/custom_map.dart';
 import 'package:carwall/featured/services/cubit/service_cubit.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 
 import '../../../core/widgets/custom_button.dart';
 import '../../../core/widgets/custom_date_picker.dart';
 import '../../../core/widgets/custom_drop_down.dart';
-import '../../../core/widgets/custom_snack_bars.dart';
 import '../../../core/widgets/custom_text_field.dart';
 import '../../car/cars/widgets/cars_top_bar.dart';
-import '../model/drop_down_item_model.dart';
-import 'services_dynamic_fields.dart';
+import '../model/request_model.dart';
 
 class ServicesBody extends StatefulWidget {
   const ServicesBody({super.key});
@@ -25,16 +20,21 @@ class ServicesBody extends StatefulWidget {
 }
 
 class _ServicesBodyState extends State<ServicesBody> {
-  // MapController mapController = MapController();
+  LatLng _selectedLocation =
+      const LatLng(36.191712543630416, 44.00969088752672);
   final _nameController = TextEditingController();
-  String? formType = '';
+  final _phoneController = TextEditingController();
+  String formType = '';
+  DateTime? checkDate;
   String? chosenService;
+
   @override
   Widget build(BuildContext context) {
-    return Center(
+    final size = MediaQuery.sizeOf(context);
+    return SingleChildScrollView(
       child: Column(
         children: [
-          CarsTopBar(),
+          const CarsTopBar(),
           Padding(
             padding: const EdgeInsets.all(15.0),
             child: Column(
@@ -46,41 +46,63 @@ class _ServicesBodyState extends State<ServicesBody> {
                 ),
                 CustomTextField(
                   hintText: 'Phone number',
-                  control: TextEditingController(),
+                  control: _phoneController,
                   onTap: () {},
                 ),
                 CustomDropDown(
                   title: 'Services',
-                  // showTitle: 'He',
                   items: serviceCubit.services.toList(),
                   onPress: (s) {
                     setState(() {
                       chosenService = s.name;
-                      formType = s.value;
+                      formType = s.value ?? '';
                     });
                   },
                 ),
-                ServicesDynamicFields(
-                  formType: formType ?? '',
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    if (formType.contains('location'))
+                      Container(
+                        padding: const EdgeInsets.symmetric(vertical: 10),
+                        height: size.height * 0.25,
+                        child: CustomMap(
+                          location: _selectedLocation,
+                          onChange: (position, hasGesture) => setState(
+                              () => _selectedLocation = position.center),
+                        ),
+                      ),
+                    if (formType.contains('date'))
+                      Container(
+                        padding: const EdgeInsets.symmetric(vertical: 5),
+                        height: size.height * 0.08,
+                        child: CustomDatePicker(
+                          hint: '',
+                          onChanged: (value) {
+                            if (value != null) {
+                              setState(() => checkDate = value);
+                            }
+                          },
+                        ),
+                      ),
+                  ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 CustomButton(
                   title: 'Submit Request',
                   onPress: () {
-                    if (chosenService != null) {
-                      FirebaseFirestore.instance.collection('requests').add({
-                        'name': _nameController.text,
-                        'service': chosenService,
-                        'date': DateTime.now().toIso8601String(),
-                      });
-                    } else {
-                      CustomSnackBar.showCustomErrorSnackBar(
-                        message: 'Please Select a Service',
-                        title: 'Error',
-                      );
-                    }
+                    serviceCubit.addServiceRequest(
+                      RequestModel(
+                        name: _nameController.text,
+                        phoneNumber: _phoneController.text,
+                        service: chosenService,
+                        location: _selectedLocation,
+                        checkDate: checkDate,
+                        createdDate: DateTime.now(),
+                      ),
+                    );
                   },
                   backgroundColor: cPrimary,
                   foregroundColor: cWhite,

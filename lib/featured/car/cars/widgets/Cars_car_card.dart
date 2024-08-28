@@ -17,21 +17,21 @@ class CarsCarCard extends StatelessWidget {
     return ListView.builder(
       itemCount: carsBloc.cars.length,
       itemBuilder: (context, i) {
-        CarModel _car = carsBloc.cars[i];
+        CarModel car = carsBloc.cars[i];
         return CarsCarCardCustomCard(
           onPress: () {
-            Get.toNamed(MyRoutes.CAR_DETAILS, arguments: _car.name);
+            Get.toNamed(MyRoutes.CAR_DETAILS, arguments: car.name);
           },
           child: Column(
             children: [
               Stack(
                 children: [
-                  CarsCarCardImage(image: _car.image),
+                  CarsCarCardImage(image: car.image),
                   const CarsCarCardTopBar(),
                 ],
               ),
               CarsCarCardCarInfo(
-                car: _car,
+                car: car,
               ),
             ],
           ),

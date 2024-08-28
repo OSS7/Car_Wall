@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/constant/colors.dart';
 
 class CarDetailsCarImage extends StatelessWidget {
   final String image;
@@ -17,12 +16,12 @@ class CarDetailsCarImage extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(1),
-            offset: Offset(0, 14),
+            offset: const Offset(0, 14),
             blurRadius: 21,
             spreadRadius: -6,
           ),
         ],
-        borderRadius: BorderRadius.only(
+        borderRadius: const BorderRadius.only(
           bottomLeft: Radius.circular(20),
           bottomRight: Radius.circular(20),
         ),

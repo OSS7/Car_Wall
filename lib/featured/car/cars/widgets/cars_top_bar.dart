@@ -36,7 +36,7 @@ class CarsTopBar extends StatelessWidget {
           ),
           Row(
             children: [
-              Text(
+              const Text(
                 'Erbil',
                 style: TextStyle(
                   fontSize: 15,

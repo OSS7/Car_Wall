@@ -1,8 +1,11 @@
+import 'package:carwall/featured/auth/login/login_view.dart';
+import 'package:carwall/featured/auth/profile/profile_view.dart';
+import 'package:carwall/featured/auth/signup/signup_view.dart';
 import 'package:carwall/featured/car/car_details/car_details_view.dart';
 import 'package:carwall/featured/car/cars/cars_view.dart';
+import 'package:carwall/featured/on_boarding/on_boarding_view.dart';
 import 'package:carwall/featured/services/services_view.dart';
 import 'package:get/get.dart';
-import 'package:get/get_navigation/src/routes/transitions_type.dart';
 
 import '../constant/routes.dart';
 
@@ -26,7 +29,22 @@ List<GetPage> getPages = [
   ),
   GetPage(
     name: MyRoutes.ON_BOARDING,
-    page: ServicesView.new,
+    page: OnBoardingView.new,
+    transition: _routingTransition,
+  ),
+  GetPage(
+    name: MyRoutes.LOGIN,
+    page: LoginView.new,
+    transition: _routingTransition,
+  ),
+  GetPage(
+    name: MyRoutes.SIGNUP,
+    page: SignupView.new,
+    transition: _routingTransition,
+  ),
+  GetPage(
+    name: MyRoutes.PROFILE,
+    page: ProfileView.new,
     transition: _routingTransition,
   ),
 ];

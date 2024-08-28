@@ -19,7 +19,7 @@ class CarDetailsView extends StatelessWidget {
       bloc: carDetailsCubit..getCarDetails(arg),
       listener: (context, state) {},
       builder: (context, state) {
-        final _car = carDetailsCubit.car;
+        final car = carDetailsCubit.car;
         return Scaffold(
           backgroundColor: cWhite,
           body: SizedBox(
@@ -35,12 +35,12 @@ class CarDetailsView extends StatelessWidget {
                           children: [
                             const CarDetailsAppBar(),
                             CarDetailsCarImage(
-                              image: _car?.image ?? '',
+                              image: car?.image ?? '',
                             ),
                             Expanded(
                               child: SingleChildScrollView(
                                 child: CarDetailsDetailsSection(
-                                  car: _car,
+                                  car: car,
                                 ),
                               ),
                             ),

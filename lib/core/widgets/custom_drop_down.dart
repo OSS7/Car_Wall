@@ -59,7 +59,7 @@ class _CustomDropDownState extends State<CustomDropDown> {
                   child: Container(
                     decoration: BoxDecoration(
                       border: Border.all(color: cPrimary),
-                      borderRadius: BorderRadius.all(
+                      borderRadius: const BorderRadius.all(
                         Radius.circular(10.0),
                       ),
                     ),
@@ -137,7 +137,7 @@ void openDialog(
   DropDownState(
     DropDown(
       selectedItems: (value) {
-        onPress(value.first as SelectedListItem);
+        onPress(value.first);
       },
       searchWidget: TextFormField(
         controller: controller,

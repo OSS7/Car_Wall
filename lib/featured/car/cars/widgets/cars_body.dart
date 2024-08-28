@@ -21,7 +21,7 @@ class CarsBody extends StatelessWidget {
           child: (state is CarsDoneState)
               ? const CarsCarCard()
               : (state is CarsErrorState)
-                  ? Text('state.message')
+                  ? const Text('state.message')
                   : const Center(
                       child: CircularProgressIndicator(),
                     ),

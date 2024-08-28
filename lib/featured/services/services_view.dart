@@ -10,23 +10,22 @@ class ServicesView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ServiceCubit, ServiceState>(
-      bloc: serviceCubit..getServices(),
-      builder: (context, state) {
-        print(state);
-        if (state is ServiceLoadingState) {
-          return const Center(child: CircularProgressIndicator());
-        }
-        if (state is ServiceErrorState) {
-          return Center(
-            child: Text(state.message),
-          );
-        }
-        return Scaffold(
-          drawer: CustomDrawer(),
-          body: const ServicesBody(),
-        );
-      },
+    return Scaffold(
+      drawer: CustomDrawer(),
+      body: BlocBuilder<ServiceCubit, ServiceState>(
+        bloc: serviceCubit..getServices(),
+        builder: (context, state) {
+          if (state is ServiceLoadingState) {
+            return const Center(child: CircularProgressIndicator());
+          }
+          if (state is ServiceErrorState) {
+            return Center(
+              child: Text(state.message),
+            );
+          }
+          return const ServicesBody();
+        },
+      ),
     );
   }
 }

@@ -20,12 +20,12 @@ class CarsCarCardCarInfo extends StatelessWidget {
             children: [
               Text(
                 car.name,
-                style: TextStyle(fontSize: 22),
+                style: const TextStyle(fontSize: 22),
               ),
               Row(
                 children: [
                   Text(car.rate.toString()),
-                  Icon(
+                  const Icon(
                     Icons.star,
                     color: Colors.yellow,
                   )
@@ -34,9 +34,9 @@ class CarsCarCardCarInfo extends StatelessWidget {
             ],
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 35.0),
-          child: const SizedBox(
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 35.0),
+          child: SizedBox(
             width: double.infinity,
             child: Divider(
               height: 4,
@@ -45,17 +45,17 @@ class CarsCarCardCarInfo extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 car.type,
-                style: TextStyle(fontSize: 16),
+                style: const TextStyle(fontSize: 16),
               ),
               Text(
                 '\$${formatter.format(car.price)}',
-                style: TextStyle(
+                style: const TextStyle(
                     fontSize: 22,
                     color: Colors.blue,
                     fontWeight: FontWeight.bold),

@@ -7,7 +7,7 @@ class CarsCarCardImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
-    return Container(
+    return SizedBox(
       height: size.height * 0.22,
       // color: Colors.white,
       child: Center(

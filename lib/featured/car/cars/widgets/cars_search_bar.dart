@@ -11,7 +11,7 @@ class CarsSearchBar extends StatelessWidget {
       padding: const EdgeInsets.all(20.0),
       child: Container(
         decoration: BoxDecoration(
-          color: Color(0xffEFFAF0),
+          color: const Color(0xffEFFAF0),
           border: Border.all(
             color: Colors.white,
             width: 1,

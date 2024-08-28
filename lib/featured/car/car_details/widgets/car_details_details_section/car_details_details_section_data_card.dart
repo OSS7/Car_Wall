@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/constant/icons.dart';
 import '../../../../../core/widgets/custom_icon.dart';
 
 class CarDetailsDetailsSectionDataCard extends StatelessWidget {

@@ -3,7 +3,6 @@ import 'package:carwall/core/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../core/constant/colors.dart';
 
 class OnBoardingContinueButton extends StatelessWidget {
   const OnBoardingContinueButton({super.key});
@@ -12,7 +11,7 @@ class OnBoardingContinueButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomButton(
         onPress: () {
-          Get.toNamed(MyRoutes.CARS);
+          Get.toNamed(MyRoutes.LOGIN);
         },
         title: 'Continue to the app');
   }

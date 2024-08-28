@@ -6,7 +6,12 @@ import '../../../core/widgets/custom_map.dart';
 
 class ServicesDynamicFields extends StatefulWidget {
   final String formType;
-  const ServicesDynamicFields({super.key, required this.formType});
+  late String? date;
+  ServicesDynamicFields({
+    super.key,
+    this.date,
+    required this.formType,
+  });
 
   @override
   State<ServicesDynamicFields> createState() => _ServicesDynamicFieldsState();
@@ -23,7 +28,7 @@ class _ServicesDynamicFieldsState extends State<ServicesDynamicFields> {
       children: [
         if (widget.formType.contains('location'))
           Container(
-            padding: EdgeInsets.symmetric(vertical: 10),
+            padding: const EdgeInsets.symmetric(vertical: 10),
             height: size.height * 0.25,
             child: CustomMap(
               location: _selectedLocation,
@@ -33,13 +38,13 @@ class _ServicesDynamicFieldsState extends State<ServicesDynamicFields> {
           ),
         if (widget.formType.contains('date'))
           Container(
-            padding: EdgeInsets.symmetric(vertical: 5),
+            padding: const EdgeInsets.symmetric(vertical: 5),
             height: size.height * 0.08,
             child: CustomDatePicker(
               hint: '',
               onChanged: (value) {
                 if (value != null) {
-                  print(value);
+                  setState(() => widget.date = value.toString());
                 }
               },
             ),

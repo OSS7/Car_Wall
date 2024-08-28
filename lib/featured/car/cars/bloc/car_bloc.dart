@@ -53,7 +53,9 @@ class CarBloc extends Bloc<CarEvent, CarState> {
               .startAt([event.text]).endAt(['${event.text}\uf8ff']).get();
           _cars =
               response.docs.map((doc) => CarModel.fromDocument(doc)).toList();
-          _cars.forEach((e) => print(e));
+          for (var e in _cars) {
+            print(e);
+          }
         } catch (e) {
           print('---------------$e');
           emit(CarsErrorState(message: e.toString()));

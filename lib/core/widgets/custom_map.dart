@@ -15,7 +15,7 @@ class CustomMap extends StatefulWidget {
 
 class _CustomMapState extends State<CustomMap> {
   MapController mapController = MapController();
-  LatLng _selectedLocation =
+  final LatLng _selectedLocation =
       const LatLng(36.191712543630416, 44.00969088752672);
   @override
   Widget build(BuildContext context) {
